@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Section = () => {
+const Section = ({ title, description, backgroundImage, leftButtonText, rightButtonText }) => {
     return (
-        <Container >
+        <Container bgImage={backgroundImage} >
             <ItemText>
-                <h1>Model S</h1>
-                <p>Order Online for <u>Toucheless Delivery</u></p>
+                <h1>{title}</h1>
+                <p>{description}</p>
             </ItemText>
 
             <ButtonGroup>
-                <LeftButton>Custom Order</LeftButton>
-                <RightButton>Existing Inventory</RightButton>
+                <LeftButton>{leftButtonText}</LeftButton>
+                {rightButtonText && <RightButton>{rightButtonText}</RightButton>}
             </ButtonGroup>
 
             <DownArrow src="/images/down-arrow.svg" />
@@ -22,7 +22,7 @@ const Section = () => {
 export default Section;
 
 const Container = styled.div`
-    background-image: url('/images/model-s.jpg');
+    background-image: ${props => `url('/images/${props.bgImage}')`};
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
